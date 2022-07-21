@@ -5,6 +5,7 @@ const morgon = require("morgan");
 
 const cors = require('cors')
 app.use(cors())
+app.use(express.static('build'))
 
 morgon.token('body', (req) => {return req.method==="POST" ? JSON.stringify(req.body) : ""})
 app.use(morgon(':method :url :status :res[content-length] - :response-time ms :body'));
